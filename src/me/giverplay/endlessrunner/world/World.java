@@ -53,6 +53,8 @@ public class World
   
   public void generateBlocks(int width)
   {
+    game.addPoint(1);
+    
     for(int i = 0; i < width; i++)
     {
       blocks.add(new Block(lastPos + (i * BLOCK_SIZE), Main.HEIGHT - BLOCK_SIZE));

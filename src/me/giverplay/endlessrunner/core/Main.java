@@ -71,15 +71,15 @@ public class Main extends Canvas implements Runnable
   
   private void render()
   {
-    graphics.setColor(new Color(0xFFAAEEEE));
+    graphics.setColor(new Color(0xFF0099FF));
     graphics.fillRect(0, 0, WIDTH, HEIGHT);
     
     game.render(graphics);
     
-    graphics.setFont(new Font("Arial", Font.PLAIN, 12));
+    graphics.setFont(new Font("Arial", Font.BOLD, 12));
     graphics.setColor(Color.WHITE);
-    graphics.drawString("TICKS: " + ticks, 0, 16);
-    graphics.drawString("FPS: " + fps, 0, 34);
+    graphics.drawString("TICKS: " + ticks, 4, HEIGHT - 16);
+    graphics.drawString("FPS: " + fps, 4, HEIGHT - 2);
     
     getBufferStrategy().show();
   }

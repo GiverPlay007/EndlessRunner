@@ -1,7 +1,7 @@
 package me.giverplay.endlessrunner.entity;
 
-import java.awt.Color;
 import java.awt.Graphics;
+import me.giverplay.endlessrunner.core.Game;
 import me.giverplay.endlessrunner.core.Main;
 import me.giverplay.endlessrunner.world.Camera;
 import me.giverplay.endlessrunner.world.World;
@@ -9,6 +9,7 @@ import me.giverplay.endlessrunner.world.World;
 public class Player
 {
   private World world;
+  private Game game;
   
   private double gravity = 0.4;
   private double vspd = 0;
@@ -19,15 +20,17 @@ public class Player
   
   private int speed = 2;
   
-  public Player(World world, int x, int y)
+  public Player(Game game, World world, int x, int y)
   {
     this.world = world;
+    this.game = game;
     this.x = x;
     this.y = y;
   }
   
   public void tick()
   {
+    speed = (game.getPoints() / 5) + 2;
     vspd += gravity;
   
     if (jump && !world.moveAllowed(getX(), (int) y + 1))
