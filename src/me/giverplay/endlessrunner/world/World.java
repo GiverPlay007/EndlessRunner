@@ -27,12 +27,22 @@ public class World
   
   public void tick()
   {
+    for(int i = 0; i < blocks.size(); i++)
+    {
+      Block block = blocks.get(i);
+      
+      if(block.getX() - Camera.x + BLOCK_SIZE < 0)
+      {
+        blocks.remove(block);
+      }
+    }
+    
     if(game.getPlayer().getX() >= lastPos)
     {
       int wid = random.nextInt(4) + 4;
-      lastPos = lastPos + (lastPos + lastWidth != 0 ? (random.nextInt(3) +1) * 32 : 0) + lastWidth * BLOCK_SIZE;
-      lastWidth = wid;
+      lastPos = lastPos + (lastPos + lastWidth != 0 ? (random.nextInt(100) + BLOCK_SIZE) : 0) + lastWidth * BLOCK_SIZE;
       generateBlocks(wid);
+      lastWidth = wid;
     }
   }
   

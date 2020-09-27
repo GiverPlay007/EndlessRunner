@@ -80,7 +80,7 @@ public class Main extends Canvas implements Runnable
   
   public void gameOver()
   {
-  
+    game = new Game();
   }
   
   @Override
