@@ -1,4 +1,4 @@
-package me.giverplay.endlessrunner;
+package me.giverplay.endlessrunner.core;
 
 import java.awt.Graphics;
 import me.giverplay.endlessrunner.entity.Player;
@@ -12,7 +12,9 @@ public class Game
   protected Game()
   {
     this.world = new World(this);
-    this.player = new Player(0, Main.HEIGHT - World.BLOCK_SIZE * 2);
+    this.player = new Player(world, 1, Main.HEIGHT - World.BLOCK_SIZE * 5);
+    
+    new Listeners(this);
   }
   
   protected void tick()

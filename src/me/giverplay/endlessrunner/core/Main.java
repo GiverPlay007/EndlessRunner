@@ -1,4 +1,4 @@
-package me.giverplay.endlessrunner;
+package me.giverplay.endlessrunner.core;
 
 import java.awt.Canvas;
 import java.awt.Color;
@@ -11,6 +11,8 @@ public class Main extends Canvas implements Runnable
 {
   public static final int WIDTH = 640;
   public static final int HEIGHT = 480;
+  
+  private static Main instance;
   
   private Graphics graphics;
   private Game game;
@@ -25,12 +27,19 @@ public class Main extends Canvas implements Runnable
     new Main();
   }
   
+  public static Main getInstance()
+  {
+    return instance;
+  }
+  
   private Main()
   {
+    instance = this;
     game = new Game();
     createFrame();
     
     new Thread(this).start();
+    requestFocus();
   }
   
   private void createFrame()
@@ -67,6 +76,11 @@ public class Main extends Canvas implements Runnable
     graphics.drawString("FPS: " + fps, 0, 34);
     
     getBufferStrategy().show();
+  }
+  
+  public void gameOver()
+  {
+  
   }
   
   @Override

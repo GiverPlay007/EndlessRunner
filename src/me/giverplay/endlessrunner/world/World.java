@@ -1,11 +1,12 @@
 package me.giverplay.endlessrunner.world;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import me.giverplay.endlessrunner.Game;
-import me.giverplay.endlessrunner.Main;
+import me.giverplay.endlessrunner.core.Game;
+import me.giverplay.endlessrunner.core.Main;
 
 public class World
 {
@@ -46,5 +47,22 @@ public class World
     {
       blocks.add(new Block(lastPos + (i * BLOCK_SIZE), Main.HEIGHT - BLOCK_SIZE));
     }
+  }
+  
+  public boolean moveAllowed(int x, int y)
+  {
+    Rectangle playerBox = new Rectangle(x, y, BLOCK_SIZE, BLOCK_SIZE);
+  
+    for(Block block : blocks)
+    {
+      Rectangle box = new Rectangle(block.getX(), block.getY(), BLOCK_SIZE, BLOCK_SIZE);
+    
+      if(box.intersects(playerBox))
+      {
+        return false;
+      }
+    }
+    
+    return true;
   }
 }

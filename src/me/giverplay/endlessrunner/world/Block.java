@@ -19,9 +19,19 @@ public class Block
   public void render(Graphics g)
   {
     g.setColor(new Color(0, 150, 200));
-    g.fillRect(x, y, BLOCK_SIZE, BLOCK_SIZE);
+    g.fillRect(x - Camera.x, y - Camera.y, BLOCK_SIZE, BLOCK_SIZE);
     
     g.setColor(Color.BLACK);
-    g.drawRect(x, y, BLOCK_SIZE, BLOCK_SIZE);
+    g.drawRect(x - Camera.x, y - Camera.y, BLOCK_SIZE, BLOCK_SIZE);
+  }
+  
+  public int getX()
+  {
+    return x;
+  }
+  
+  public int getY()
+  {
+    return y;
   }
 }
