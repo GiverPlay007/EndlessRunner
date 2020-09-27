@@ -74,8 +74,7 @@ public class Player
   
   public void render(Graphics g)
   {
-    g.setColor(Color.RED);
-    g.fillRect(getX() - Camera.x, getY() - Camera.y, 32, 32);
+    g.drawImage(Main.PLAYER, getX() - Camera.x, getY() - Camera.y, 32, 32, null);
   }
   
   public int getX()

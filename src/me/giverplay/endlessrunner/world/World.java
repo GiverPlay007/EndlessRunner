@@ -37,7 +37,7 @@ public class World
       }
     }
     
-    if(game.getPlayer().getX() >= lastPos)
+    if(game.getPlayer().getX() + Main.WIDTH / 2 >= lastPos)
     {
       int wid = random.nextInt(4) + 4;
       lastPos = lastPos + (lastPos + lastWidth != 0 ? (random.nextInt(100) + BLOCK_SIZE) : 0) + lastWidth * BLOCK_SIZE;

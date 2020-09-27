@@ -5,12 +5,18 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 public class Main extends Canvas implements Runnable
 {
   public static final int WIDTH = 640;
   public static final int HEIGHT = 480;
+  
+  public static BufferedImage PLAYER;
+  public static BufferedImage STONE;
   
   private static Main instance;
   
@@ -65,7 +71,7 @@ public class Main extends Canvas implements Runnable
   
   private void render()
   {
-    graphics.setColor(Color.BLACK);
+    graphics.setColor(new Color(0xFFAAEEEE));
     graphics.fillRect(0, 0, WIDTH, HEIGHT);
     
     game.render(graphics);
@@ -122,6 +128,20 @@ public class Main extends Canvas implements Runnable
         currentFps = 0;
         timer += 1000;
       }
+    }
+  }
+  
+  static
+  {
+    try
+    {
+      STONE = ImageIO.read(Main.class.getResource("/Stone.png"));
+      PLAYER = ImageIO.read(Main.class.getResource("/Player.png"));
+    }
+    catch(IOException e)
+    {
+      e.printStackTrace();
+      System.exit(1);
     }
   }
 }
